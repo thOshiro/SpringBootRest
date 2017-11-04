@@ -3,8 +3,11 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import entity.Investor;
 
+@Repository
 public class InvestorRepository {
 	
 	private static InvestorRepository instance; 
@@ -37,6 +40,15 @@ public class InvestorRepository {
 			}
 			i++;
 		}
+	}
+	
+	public Investor getInvestor(long id) {
+		for(Investor investor: investors) {
+			if(investor.getId() == id) {
+				return investor;
+			}
+		}
+		return null;
 	}
 	
 	public void deleteAllInvestors() {

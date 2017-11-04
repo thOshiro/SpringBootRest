@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="math.MathTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-03T03:48:56" hostname="gemini" time="0.006">
+<testsuite name="math.MathTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-04T21:29:16" hostname="gemini" time="0.009">
   <properties/>
-  <testcase name="calculateCompoundInterestMonthly_test" classname="math.MathTest" time="0.005"/>
-  <testcase name="calculateCompoundInterestWithYearInvest_test" classname="math.MathTest" time="0.001"/>
-  <testcase name="calculateCompoundInterestWithMontlhyInvest_test" classname="math.MathTest" time="0.0"/>
+  <testcase name="calculateCompoundInterestMonthly_test" classname="math.MathTest" time="0.006"/>
+  <testcase name="calculateCompoundInterestWithYearInvest_test" classname="math.MathTest" time="0.0"/>
+  <testcase name="calculateCompoundInterestWithMontlhyInvest_test" classname="math.MathTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

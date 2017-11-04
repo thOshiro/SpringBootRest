@@ -1,6 +1,6 @@
 package entity;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Investor {
 	
@@ -9,9 +9,17 @@ public class Investor {
 	private String dateVisited;
 	private Double initialInvestment;
 	private Double monthlyInvestment;
-	private Map<Integer, Double> yearInvestReturns;
+	private HashMap<Integer, Double> yearInvestReturns;
 	
-	public Investor(long id, String name, String dateVisited, Double initialInvestment, Double monthlyInvestment,Map<Integer, Double> yearInvestReturns) {
+	public Investor(long id, String name, String dateVisited, Double initialInvestment, Double monthlyInvestment) {
+		this.id = id;
+		this.name = name;
+		this.dateVisited = dateVisited;
+		this.initialInvestment = initialInvestment;
+		this.monthlyInvestment = monthlyInvestment;
+	}
+	
+	public Investor(long id, String name, String dateVisited, Double initialInvestment, Double monthlyInvestment,HashMap<Integer, Double> yearInvestReturns) {
 		this.id = id;
 		this.name = name;
 		this.dateVisited = dateVisited;
@@ -20,11 +28,11 @@ public class Investor {
 		this.yearInvestReturns = yearInvestReturns;
 	}
 
-	public Map<Integer, Double> getYearInvestReturns() {
+	public HashMap<Integer, Double> getYearInvestReturns() {
 		return yearInvestReturns;
 	}
 
-	public void setYearInvestReturns(Map<Integer, Double> yearInvestReturns) {
+	public void setYearInvestReturns(HashMap<Integer, Double> yearInvestReturns) {
 		this.yearInvestReturns = yearInvestReturns;
 	}
 

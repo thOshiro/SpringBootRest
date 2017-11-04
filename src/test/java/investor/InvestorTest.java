@@ -32,5 +32,4 @@ public class InvestorTest {
 		assertEquals(initialInvest, investors.get(0).getInitialInvestment());
 		assertEquals(monthlyInvest, investors.get(0).getMonthlyInvestment());
 	}
-
 }

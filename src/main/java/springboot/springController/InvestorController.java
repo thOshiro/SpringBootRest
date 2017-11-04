@@ -1,9 +1,10 @@
 package springboot.springController;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import entity.Investor;
-import repository.InvestorRepository;
+import service.FinanceCalculatorService;
+import service.InvestorService;
 
 @RestController
 public class InvestorController {
-
-	private static final double INTEREST_RATE = 7.5;
-	private static final int INVESTMENT_PERIOD = 12;
 	
 	private final AtomicLong counter = new AtomicLong();
-	private InvestorRepository userRepo = InvestorRepository.getInstance();
 	
 	@Autowired
-	private MathController mathController;
+	private InvestorService investorService;
 	
+	@Autowired
+	private FinanceCalculatorService financeService;
 	
 	/**
 	 * Register a new investor
@@ -35,19 +35,14 @@ public class InvestorController {
 	 * 
 	 * @return The registered investor
 	 */
-	@RequestMapping("/registerUser")
+	@RequestMapping("/registerInvestor")
 	public Investor registerUser(@RequestParam(value="name", defaultValue="Stranger") String name,
 			@RequestParam(value="initialInvest", defaultValue="0") Double initialInvest,
 			@RequestParam(value="monthlyInvest", defaultValue="0") Double monthlyInvest) {
-		Date currentDate = Calendar.getInstance().getTime();
-		Investor user = new Investor(counter.incrementAndGet(), name, 
-				new SimpleDateFormat("dd-MM-yyyy").format(currentDate),
-				initialInvest,
-				monthlyInvest,
-				mathController.calculateCompoundInterestMonthly(initialInvest, INTEREST_RATE, INVESTMENT_PERIOD, monthlyInvest));
 		
-		userRepo.addInvestor(user);
-		return user;
+		Date accessDate = Calendar.getInstance().getTime();
+		
+		return investorService.addInvestor(counter.getAndIncrement(), name, accessDate, initialInvest, monthlyInvest);
 	}
 	
 	
@@ -56,9 +51,31 @@ public class InvestorController {
 	 * 
 	 * @return list of investors 
 	 */
-    @RequestMapping("/listUsers")
-    public List<Investor> getAllUsers() {
-		return userRepo.getAllInvestor();
+    @RequestMapping("/listInvestors")
+    public List<Investor> getAllInvestors() {
+		return investorService.findAllInvestors();
     }
 
+    
+    /**
+     * Set an investor investment plan
+     * @param investorId investor id
+	 * @param interestRate investment interest rate
+	 * @param months number of months the investment will last
+	 * 
+	 * @return the investor name as key, with the new investment plan prediction 
+     * 
+     */
+    @RequestMapping("/setInvestorPlan")
+    public Map<String, HashMap<Integer, Double>> getInvestorYearReturn(@RequestParam(value="investorId")long id, 
+    		@RequestParam(value="interestRate") double interestRate, 
+    		@RequestParam(value="months") int months) {
+    	
+    	Investor investor = investorService.getInvestor(id);
+    	investor.setYearInvestReturns(financeService.calculateCompoundInterestMonthly(investor.getInitialInvestment(), interestRate, months, investor.getMonthlyInvestment()));
+    	
+    	Map<String, HashMap<Integer, Double>> result = new HashMap<String, HashMap<Integer, Double>>();
+    	result.put(investor.getName(), investor.getYearInvestReturns());
+    	return result;
+    }
 }

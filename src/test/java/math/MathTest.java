@@ -8,12 +8,12 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import service.FinanceCalculator;
+import service.FinanceCalculatorService;
 
 public class MathTest {
 	
 	
-	FinanceCalculator calculator = new FinanceCalculator();
+	FinanceCalculatorService calculator = new FinanceCalculatorService();
 	
 	
 	@Test
