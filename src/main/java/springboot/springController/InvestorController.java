@@ -36,7 +36,7 @@ public class InvestorController {
 	 * @return The registered investor
 	 */
 	@RequestMapping("/registerInvestor")
-	public Investor registerUser(@RequestParam(value="name", defaultValue="Stranger") String name,
+	public Investor registerInvestor(@RequestParam(value="name", defaultValue="Stranger") String name,
 			@RequestParam(value="initialInvest", defaultValue="0") Double initialInvest,
 			@RequestParam(value="monthlyInvest", defaultValue="0") Double monthlyInvest) {
 		

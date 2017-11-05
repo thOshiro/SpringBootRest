@@ -23,23 +23,25 @@ public class InvestorRepository {
 		return instance;
 	}
 
-	public void addInvestor(Investor user) {
-		investors.add(user);
+	public Investor addInvestor(Investor investor) {
+		investors.add(investor);
+		return investor;
 	}
 	
 	public List<Investor> getAllInvestor(){
 		return investors;
 	}
 	
-	public void deleteInvestor(long id) {
+	public Investor deleteInvestor(long id) {
 		int i=0;
 		for(Investor investor: investors) {
 			if(investor.getId() == id) {
 				investors.remove(i);
-				break;
+				return investor;
 			}
 			i++;
 		}
+		return null;
 	}
 	
 	public Investor getInvestor(long id) {

@@ -32,8 +32,8 @@ public class InvestorService {
 		return investRepo.getAllInvestor();
 	}
 	
-	public void deleteInvestor(long id) {
-		investRepo.deleteInvestor(id);
+	public Investor deleteInvestor(long id) {
+		return investRepo.deleteInvestor(id);
 	}
 	
 	public void deleteAllInvestors() {
