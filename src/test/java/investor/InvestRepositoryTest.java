@@ -6,7 +6,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
@@ -14,7 +13,6 @@ import org.junit.Test;
 
 import entity.Investor;
 import repository.InvestorRepository;
-import utils.DateFormatUtil;
 
 public class InvestRepositoryTest {
 	
@@ -24,19 +22,16 @@ public class InvestRepositoryTest {
 	private static Investor investor2;
 	private static Investor investor3;
 	
-	private DateFormatUtil dateUtil;
-	
 	
 	@Before
 	public void setUp() {
-		dateUtil = new DateFormatUtil();
 		mockedInvestorRepo = mock(InvestorRepository.class);
 		
-		investor1 = new Investor(0, "Ulysses", dateUtil.formatDateToString(01, Calendar.NOVEMBER, 2017), 100.00, 0.00);
+		investor1 = new Investor(0, "Ulysses", 100.00, 0.00);
 
-		investor2 = new Investor(1, "Achilles", dateUtil.formatDateToString(01, Calendar.JANUARY, 2017), 100.00, 100.00);
+		investor2 = new Investor(1, "Achilles", 100.00, 100.00);
 
-		investor3 = new Investor(2, "Medusa",dateUtil.formatDateToString(01, Calendar.JULY, 2017), 500.00, 300.00);
+		investor3 = new Investor(2, "Medusa", 500.00, 300.00);
 		
 		when(mockedInvestorRepo.getAllInvestor()).thenReturn(Arrays.asList(investor1, investor2, investor3));
 		when(mockedInvestorRepo.getInvestor(0)).thenReturn(investor1);
@@ -61,8 +56,6 @@ public class InvestRepositoryTest {
 		assertEquals(investor.getId(), 1);
 		
 		assertEquals(investor.getName(), "Achilles");
-		
-		assertEquals(investor.getDateVisited(),	dateUtil.formatDateToString(01, Calendar.JANUARY, 2017));
 		
 		assertEquals(investor.getInitialInvestment(), new Double("100.00"));
 		

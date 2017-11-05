@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="math.MathTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-05T00:39:38" hostname="gemini" time="0.006">
+<testsuite name="math.MathTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-05T03:28:32" hostname="gemini" time="0.006">
   <properties/>
   <testcase name="calculateCompoundInterestMonthly_test" classname="math.MathTest" time="0.005"/>
   <testcase name="calculateCompoundInterestWithYearInvest_test" classname="math.MathTest" time="0.0"/>

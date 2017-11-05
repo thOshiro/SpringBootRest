@@ -1,7 +1,5 @@
 package springboot.springController;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,9 +38,7 @@ public class InvestorController {
 			@RequestParam(value="initialInvest", defaultValue="0") Double initialInvest,
 			@RequestParam(value="monthlyInvest", defaultValue="0") Double monthlyInvest) {
 		
-		Date accessDate = Calendar.getInstance().getTime();
-		
-		return investorService.addInvestor(counter.getAndIncrement(), name, accessDate, initialInvest, monthlyInvest);
+		return investorService.addInvestor(counter.getAndIncrement(), name, initialInvest, monthlyInvest);
 	}
 	
 	

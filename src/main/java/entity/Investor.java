@@ -6,23 +6,20 @@ public class Investor {
 	
 	private final long id;
 	private final String name;
-	private String dateVisited;
 	private Double initialInvestment;
 	private Double monthlyInvestment;
 	private HashMap<Integer, Double> yearInvestReturns;
 	
-	public Investor(long id, String name, String dateVisited, Double initialInvestment, Double monthlyInvestment) {
+	public Investor(long id, String name, Double initialInvestment, Double monthlyInvestment) {
 		this.id = id;
 		this.name = name;
-		this.dateVisited = dateVisited;
 		this.initialInvestment = initialInvestment;
 		this.monthlyInvestment = monthlyInvestment;
 	}
 	
-	public Investor(long id, String name, String dateVisited, Double initialInvestment, Double monthlyInvestment,HashMap<Integer, Double> yearInvestReturns) {
+	public Investor(long id, String name, Double initialInvestment, Double monthlyInvestment,HashMap<Integer, Double> yearInvestReturns) {
 		this.id = id;
 		this.name = name;
-		this.dateVisited = dateVisited;
 		this.initialInvestment = initialInvestment;
 		this.monthlyInvestment = monthlyInvestment;
 		this.yearInvestReturns = yearInvestReturns;
@@ -58,9 +55,5 @@ public class Investor {
 
 	public String getName() {
 		return name;
-	}
-
-	public String getDateVisited() {
-		return dateVisited;
 	}
 }

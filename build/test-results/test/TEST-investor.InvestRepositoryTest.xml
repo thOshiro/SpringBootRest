@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="investor.InvestRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-11-05T00:39:38" hostname="gemini" time="0.116">
+<testsuite name="investor.InvestRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-11-05T03:28:32" hostname="gemini" time="0.154">
   <properties/>
-  <testcase name="testAddInvestor" classname="investor.InvestRepositoryTest" time="0.106"/>
+  <testcase name="testAddInvestor" classname="investor.InvestRepositoryTest" time="0.142"/>
   <testcase name="testDeleteAllInvestors" classname="investor.InvestRepositoryTest" time="0.003"/>
-  <testcase name="testGetAllInvestors" classname="investor.InvestRepositoryTest" time="0.003"/>
+  <testcase name="testGetAllInvestors" classname="investor.InvestRepositoryTest" time="0.002"/>
   <testcase name="testDeleteInvestor" classname="investor.InvestRepositoryTest" time="0.002"/>
   <testcase name="testGetInvestor" classname="investor.InvestRepositoryTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
