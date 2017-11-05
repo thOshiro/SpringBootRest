@@ -34,7 +34,6 @@ import service.FinanceCalculatorService;
 import service.InvestorService;
 import springboot.Welcome;
 import springboot.springController.InvestorController;
-import utils.DateFormatUtil;
 
 // Provides Spring test context
 @RunWith(SpringRunner.class) 
@@ -57,7 +56,6 @@ public class InvestorControllerTest {
 	@InjectMocks
 	InvestorController investorController;
 	
-	static DateFormatUtil dateUtil = new DateFormatUtil();;
 	
 	private static final long INVESTOR1_ID = 0;
 	private static final String INVESTOR1_NAME = "Thomas";
