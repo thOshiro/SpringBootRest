@@ -5,6 +5,8 @@ import java.util.HashMap;
 public class Investor {
 	
 	private final long id;
+	
+	
 	private final String name;
 	private Double initialInvestment;
 	private Double monthlyInvestment;
