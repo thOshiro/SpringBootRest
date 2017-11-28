@@ -2,16 +2,18 @@ package springboot.springController;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import service.FinanceCalculatorService;
+import service.IFinanceCalculatorService;
 
 @RestController
 public class FinanceCalculatorController {
 
-	FinanceCalculatorService financeCalculator = new FinanceCalculatorService();
+	@Autowired
+	IFinanceCalculatorService financeCalculator;
 
 	/**
 	 * When entered the address compoundInterestMontly and the given parameters

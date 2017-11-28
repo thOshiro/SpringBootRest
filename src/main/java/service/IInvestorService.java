@@ -8,14 +8,13 @@ public interface IInvestorService {
 	
 	/**
 	 * Register a new Investor
-	 * @param id investors id
 	 * @param name investors name
 	 * @param initialInvest initial amount invest is willing to apply
 	 * @param monthlyInvest monthly amount invest is willing to apply
 	 * 
 	 * @return investor registered
 	 */
-	public Investor addInvestor(long id, String name, Double initialInvest, Double monthlyInvest);
+	public Investor addInvestor(String name, Double initialInvest, Double monthlyInvest);
 	
 	/**
 	 * Find all registered investors 
@@ -29,7 +28,7 @@ public interface IInvestorService {
 	 * 
 	 *  @return investor deleted
 	 */
-	public Investor deleteInvestor(long id);
+	public void deleteInvestor(long id);
 	
 	/**
 	 *  Delete all investors
@@ -44,4 +43,24 @@ public interface IInvestorService {
 	 * @return investor registered if any
 	 */
 	public Investor getInvestor(long investorId);
+	
+	/**
+	 * Get a registered investor
+	 * 
+	 * @param investorId the investor name to return
+	 * 
+	 * @return investor registered if any
+	 */
+	public Investor getInvestor(String investor);
+	
+	/**
+	 * Set investing plan of investor
+	 * 
+	 * @param investorId investor id
+	 * @param interestRate interest rate
+	 * @param months period in months the investment will be applied
+	 * 
+	 * @return investor with new plan
+	 */
+	public Investor setInvestorPlan(long investorId, double interestRate, int months);
 }

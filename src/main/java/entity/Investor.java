@@ -1,38 +1,53 @@
 package entity;
 
-import java.util.HashMap;
+import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
+@Entity
 public class Investor {
 	
-	private final long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	
 	
-	private final String name;
+	private String name;
 	private Double initialInvestment;
 	private Double monthlyInvestment;
-	private HashMap<Integer, Double> yearInvestReturns;
 	
-	public Investor(long id, String name, Double initialInvestment, Double monthlyInvestment) {
-		this.id = id;
+	@Lob
+	private Map<Integer, Double> investmentReturn;
+	
+	// for Jpa
+	protected Investor() {
+		
+	}
+	
+	public Investor(String name, Double initialInvestment, Double monthlyInvestment) {
 		this.name = name;
 		this.initialInvestment = initialInvestment;
 		this.monthlyInvestment = monthlyInvestment;
 	}
 	
-	public Investor(long id, String name, Double initialInvestment, Double monthlyInvestment,HashMap<Integer, Double> yearInvestReturns) {
-		this.id = id;
+	public Investor(String name, Double initialInvestment, Double monthlyInvestment,Map<Integer, Double> yearInvestReturns) {
 		this.name = name;
 		this.initialInvestment = initialInvestment;
 		this.monthlyInvestment = monthlyInvestment;
-		this.yearInvestReturns = yearInvestReturns;
+		this.investmentReturn = yearInvestReturns;
 	}
 
-	public HashMap<Integer, Double> getYearInvestReturns() {
-		return yearInvestReturns;
+	public Map<Integer, Double> getYearInvestReturns() {
+		return investmentReturn;
 	}
 
-	public void setYearInvestReturns(HashMap<Integer, Double> yearInvestReturns) {
-		this.yearInvestReturns = yearInvestReturns;
+	public void setYearInvestReturns(Map<Integer, Double> yearInvestReturns) {
+		this.investmentReturn = yearInvestReturns;
 	}
 
 	public Double getInitialInvestment() {

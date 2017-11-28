@@ -1,9 +1,6 @@
 package springboot.springController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,19 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import entity.Investor;
-import service.FinanceCalculatorService;
-import service.InvestorService;
+import service.IInvestorService;
 
 @RestController
 public class InvestorController {
 	
-	private final AtomicLong counter = new AtomicLong();
-	
 	@Autowired
-	private InvestorService investorService;
-	
-	@Autowired
-	private FinanceCalculatorService financeService;
+	private IInvestorService investorService;
 	
 	/**
 	 * Register a new investor
@@ -38,7 +29,7 @@ public class InvestorController {
 			@RequestParam(value="initialInvest", defaultValue="0") Double initialInvest,
 			@RequestParam(value="monthlyInvest", defaultValue="0") Double monthlyInvest) {
 		
-		return investorService.addInvestor(counter.getAndIncrement(), name, initialInvest, monthlyInvest);
+		return investorService.addInvestor(name, initialInvest, monthlyInvest);
 	}
 	
 	
@@ -63,15 +54,10 @@ public class InvestorController {
      * 
      */
     @RequestMapping("/setInvestorPlan")
-    public Map<String, HashMap<Integer, Double>> getInvestorYearReturn(@RequestParam(value="investorId")long id, 
+    public Investor getInvestorYearReturn(@RequestParam(value="investorId")long id, 
     		@RequestParam(value="interestRate") double interestRate, 
     		@RequestParam(value="months") int months) {
     	
-    	Investor investor = investorService.getInvestor(id);
-    	investor.setYearInvestReturns(financeService.calculateCompoundInterestMonthly(investor.getInitialInvestment(), interestRate, months, investor.getMonthlyInvestment()));
-    	
-    	Map<String, HashMap<Integer, Double>> result = new HashMap<String, HashMap<Integer, Double>>();
-    	result.put(investor.getName(), investor.getYearInvestReturns());
-    	return result;
+    	return investorService.setInvestorPlan(id, interestRate, months);
     }
 }

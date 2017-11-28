@@ -1,4 +1,4 @@
-package math;
+package serviceTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import service.FinanceCalculatorService;
 
-public class MathTest {
+public class FinanceCalculatorServiceTest {
 	
 	
 	FinanceCalculatorService calculator = new FinanceCalculatorService();

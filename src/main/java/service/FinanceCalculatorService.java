@@ -16,7 +16,7 @@ public class FinanceCalculatorService implements IFinanceCalculatorService{
 			int periodInMonths,
 			double montlhyInvestment) {
 		
-		HashMap<Integer, Double> montlhyResult = new HashMap<>(); 
+		HashMap<Integer, Double> montlhyResult = new HashMap<Integer, Double>(); 
 		double result = 0;
 		
 		for(int i=0; i<periodInMonths ;i++) {
